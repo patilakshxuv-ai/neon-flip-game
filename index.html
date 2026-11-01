@@ -1,23 +1,500 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="SdkcGnZ0TJqAQD-XSaxdFHs3NhHoQCtlBqXM9RdpTBs">
-    <title>Neon Flip Game</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062"
-      crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <!-- VELAR -->
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-7950440884088062"
-      data-ad-slot="7650656586"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>NEON FLIP – One Tap Gravity Challenge</title>
+  <meta name="description" content="Addictive one-touch cyberpunk arcade game. Tap to flip gravity, avoid lethal lasers, collect coins, and challenge friends!">
+  <meta name="google-adsense-account" content="ca-pub-7950440884088062">
+  <meta name="theme-color" content="#06040e">
+
+  <!-- Live Google AdSense Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Legal Navigation & Cookie Banner Styling */
+    .menu-legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0, 243, 255, 0.2);
+    }
+    .menu-legal-links a {
+      color: #00f3ff;
+      font-size: 11px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .menu-legal-links a:hover { text-decoration: underline; }
+
+    /* Live AdSense Banner Wrapper */
+    .adsense-unit-wrapper {
+      width: 100%;
+      max-width: 420px;
+      min-height: 50px;
+      background: rgba(10, 8, 20, 0.85);
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      border-radius: 8px;
+      margin: 8px 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .adsense-tag-label {
+      font-size: 9px;
+      color: #78909c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    /* Cookie Banner */
+    #cookie-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 4, 18, 0.98);
+      border-top: 2px solid #00f3ff;
+      padding: 12px 18px;
+      z-index: 9999;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+    }
+    .cookie-text {
+      font-size: 12px;
+      color: #e0e0e0;
+      max-width: 720px;
+      line-height: 1.4;
+    }
+    .cookie-text a { color: #00f3ff; text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 8px; }
+    .btn-cookie-accept {
+      background: #00f3ff;
+      color: #000;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-cookie-decline {
+      background: transparent;
+      color: #aaa;
+      border: 1px solid #555;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Editorial Details for AdSense Crawlers */
+    .game-editorial-guide {
+      margin-top: 10px;
+      text-align: left;
+      font-size: 11px;
+      color: #8e9aaf;
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-height: 80px;
+      overflow-y: auto;
+    }
+    .game-editorial-guide summary {
+      color: #00f3ff;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container">
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Top AdSense Banner Bar -->
+    <aside id="admob-banner" aria-label="Advertisement Banner">
+      <div class="admob-content">
+        <span class="admob-badge">Ad</span>
+        <span>AdSense Live Unit</span>
+      </div>
+      <div style="font-size: 11px; color: #888;">ca-pub-7950440884088062</div>
+    </aside>
+
+    <!-- Screen 1: Animated Splash Screen -->
+    <section id="splash-screen" class="game-screen interactive-layer" aria-label="Splash Screen">
+      <div class="splash-content">
+        <h1 class="neon-logo">NEON FLIP</h1>
+        <div class="neon-sublogo">ONE TAP CHALLENGE</div>
+      </div>
+      <div id="splash-tap" class="tap-to-start hidden">TAP SCREEN TO ENTER</div>
+    </section>
+
+    <!-- Screen 2: Main Menu -->
+    <section id="menu-screen" class="game-screen interactive-layer hidden" aria-label="Main Menu">
+      <!-- Live AdSense Banner -->
+      <div class="adsense-unit-wrapper">
+        <div class="adsense-tag-label">Advertisement</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="autorelaxed"
+             data-ad-client="ca-pub-7950440884088062"
+             data-ad-slot="6304951178"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-6t+ed+2i-1n-4w"
+             data-ad-client="ca-pub-7950440884088062"
+             data-ad-slot="7618032841"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- Top Stats Bar -->
+      <header class="stats-bar">
+        <div class="stat-pill stat-coins">
+          <span>🪙</span>
+          <span class="stat-coins-val">0</span>
+        </div>
+        <div id="vip-user-badge" class="vip-badge-tag hidden">VIP PASS ACTIVE</div>
+        <div class="stat-pill stat-high">
+          <span>👑 BEST:</span>
+          <span class="stat-highscore-val">0</span>
+        </div>
+      </header>
+
+      <div class="menu-hero">
+        <h2 class="menu-title">NEON FLIP</h2>
+        <div class="menu-subtitle">QUANTUM REFLEX MATRIX</div>
+      </div>
+
+      <div id="friend-challenge-alert" class="friend-challenge-alert hidden"></div>
+
+      <div class="menu-actions">
+        <button id="btn-play" class="cyber-btn btn-play-primary">
+          <span>▶ PLAY GAME</span>
+        </button>
+
+        <button id="btn-daily-challenge" class="cyber-btn btn-daily-accent">
+          <span>🌟 DAILY CHALLENGE</span>
+        </button>
+
+        <div class="menu-grid-buttons">
+          <button id="btn-open-shop" class="cyber-btn cyber-btn-secondary">
+            <span>🎨 SKINS</span>
+          </button>
+          <button id="btn-open-leaderboard" class="cyber-btn cyber-btn-secondary">
+            <span>🏆 RANKS</span>
+          </button>
+          <button id="btn-open-daily-rewards" class="cyber-btn cyber-btn-secondary">
+            <span>🎁 DAILY</span>
+          </button>
+          <button id="btn-open-achievements" class="cyber-btn cyber-btn-secondary">
+            <span>⭐ BADGES</span>
+          </button>
+        </div>
+
+        <button id="btn-open-vip" class="cyber-btn" style="border-color: #ffd700; color: #ffd700;">
+          <span>👑 VIP PASS (NO ADS)</span>
+        </button>
+
+        <button id="btn-open-settings" class="cyber-btn cyber-btn-secondary" style="margin-top: 4px;">
+          <span>⚙️ SETTINGS</span>
+        </button>
+
+        <!-- Editorial Overview for Googlebot Quality Indexing -->
+        <details class="game-editorial-guide">
+          <summary>🎮 About Neon Flip & Mechanics</summary>
+          <p>Neon Flip is an arcade reflex runner. Tap the screen or press Space to invert gravity between the floor and ceiling. Avoid laser spires and plasma mines while collecting neon coins. Near-miss maneuvers grant combo score multipliers. Features 8 unlockable skins, daily seeded runs, and real-time tournaments.</p>
+        </details>
+
+        <!-- Legal Navigation Links -->
+        <nav class="menu-legal-links" aria-label="Legal Navigation">
+          <a href="about.html">About Us</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Screen 3: Gameplay HUD -->
+    <section id="gameplay-screen" class="game-screen hidden" aria-label="Gameplay HUD">
+      <header class="hud-top-bar">
+        <div class="stat-pill stat-coins interactive-ui">
+          <span>🪙</span>
+          <span id="hud-coins">0</span>
+        </div>
+
+        <div class="hud-score-box">
+          <div id="hud-score" class="hud-score-number">0</div>
+          <div id="hud-combo" class="hud-combo-badge hidden">2x COMBO!</div>
+        </div>
+
+        <button id="btn-pause" class="btn-icon interactive-ui" aria-label="Pause">⏸</button>
+      </header>
+
+      <div id="hud-challenge-banner" class="hud-challenge-banner hidden"></div>
+      <div class="tap-hint">TAP ANYWHERE TO FLIP GRAVITY</div>
+    </section>
+
+    <!-- Screen 4: Game Over Screen -->
+    <section id="gameover-screen" class="game-screen interactive-layer hidden" aria-label="Game Over">
+      <div class="gameover-card">
+        <h2 class="go-title">SYSTEM HALTED</h2>
+        <div id="go-new-high-badge" class="new-high-badge hidden">🏆 NEW RECORD!</div>
+
+        <div id="go-score-val" class="go-score-large">0</div>
+
+        <div class="go-stats-grid">
+          <div class="go-stat-cell">
+            <div class="cell-label">BEST RECORD</div>
+            <div id="go-best-val" class="cell-val">0</div>
+          </div>
+          <div class="go-stat-cell">
+            <div class="cell-label">COINS</div>
+            <div id="go-coins-val" class="cell-val">+0</div>
+          </div>
+          <div class="go-stat-cell">
+            <div class="cell-label">NEAR MISS</div>
+            <div id="go-nearmiss-val" class="cell-val">0</div>
+          </div>
+        </div>
+
+        <!-- Live Google AdSense Game-Over Ad Unit -->
+        <div class="adsense-unit-wrapper">
+          <div class="adsense-tag-label">Advertisement</div>
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-7950440884088062"
+               data-ad-slot="7697748881"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          <!-- VELAR -->
+          <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-7950440884088062"
+                data-ad-slot="7650656586"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="go-actions">
+          <button id="btn-revive-ad" class="cyber-btn btn-revive-accent">
+            <span>🎬 REVIVE WITH SHIELD</span>
+          </button>
+          <button id="btn-double-coins" class="cyber-btn" style="border-color: #ffd700; color: #ffd700;">
+            <span>💰 DOUBLE COINS</span>
+          </button>
+          <button id="btn-gameover-restart" class="cyber-btn btn-play-primary">
+            <span>↺ INSTANT RESTART</span>
+          </button>
+          <button id="btn-share-scorecard" class="cyber-btn btn-share-accent">
+            <span>📤 SHARE SCORECARD</span>
+          </button>
+          <button id="btn-gameover-menu" class="cyber-btn cyber-btn-secondary">
+            <span>MAIN MENU</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal: Pause -->
+    <div id="pause-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">GAME PAUSED</h3>
+        </div>
+        <div class="modal-body" style="display: flex; flex-direction: column; gap: 12px;">
+          <button id="btn-resume" class="cyber-btn btn-play-primary">RESUME</button>
+          <button id="btn-pause-restart" class="cyber-btn">RESTART</button>
+          <button id="btn-pause-quit" class="cyber-btn cyber-btn-secondary">QUIT TO MENU</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Skins Shop -->
+    <div id="skins-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">CYBER SKINS SHOP</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="skins-grid-container" class="skins-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Leaderboards -->
+    <div id="leaderboard-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">LEADERBOARDS</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="lb-tabs">
+            <button id="tab-global" class="lb-tab active">GLOBAL</button>
+            <button id="tab-daily" class="lb-tab">DAILY SEED</button>
+          </div>
+          <div id="leaderboard-list" class="lb-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Daily Rewards -->
+    <div id="daily-rewards-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">7-DAY DAILY REWARDS</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="daily-calendar-grid" class="daily-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Achievements -->
+    <div id="achievements-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">ACHIEVEMENTS</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="achievements-list-container" class="ach-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Settings -->
+    <div id="settings-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">SETTINGS</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-group">
+            <div class="setting-row">
+              <label for="setting-master-vol">Master Volume</label>
+              <input id="setting-master-vol" type="range" min="0" max="100">
+            </div>
+            <div class="setting-row">
+              <label for="setting-sfx-vol">SFX Volume</label>
+              <input id="setting-sfx-vol" type="range" min="0" max="100">
+            </div>
+            <div class="setting-row">
+              <label for="setting-music-vol">Synth Music</label>
+              <input id="setting-music-vol" type="range" min="0" max="100">
+            </div>
+            <div class="setting-row">
+              <label for="setting-haptics">Vibration / Haptics</label>
+              <input id="setting-haptics" type="checkbox">
+            </div>
+            <div class="setting-row">
+              <label for="setting-screenshake">Screen Shake</label>
+              <input id="setting-screenshake" type="checkbox">
+            </div>
+            <div class="setting-row">
+              <label for="setting-quality">Graphics Quality</label>
+              <select id="setting-quality">
+                <option value="high">High (Full Bloom)</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low (Fast Battery)</option>
+              </select>
+            </div>
+            <button id="btn-reset-data" class="cyber-btn" style="border-color: #ff0055; color: #ff0055; margin-top: 10px;">
+              RESET PROGRESS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Share Scorecard -->
+    <div id="scorecard-modal" class="modal-overlay hidden" role="dialog" aria-modal="true">
+      <div class="modal-content interactive-ui">
+        <div class="modal-header">
+          <h3 class="modal-title">SHARE SCORECARD</h3>
+          <button class="btn-close-modal">✕</button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <img id="scorecard-preview-img" alt="Scorecard Preview" src="">
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+            <button id="btn-scorecard-share" class="cyber-btn btn-play-primary">SHARE VIA APPS</button>
+            <button id="btn-scorecard-download" class="cyber-btn">DOWNLOAD IMAGE</button>
+            <button id="btn-copy-challenge-link" class="cyber-btn btn-daily-accent">COPY CHALLENGE LINK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GDPR / CCPA Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="hidden" role="region" aria-label="Cookie Consent">
+      <div class="cookie-text">
+        We and our advertising partner (Google AdSense) use cookies to personalize ads, provide social features, and analyze traffic. View our <a href="privacy.html" target="_blank">Privacy Policy</a> to learn more.
+      </div>
+      <div class="cookie-actions">
+        <button id="btn-cookie-accept" class="btn-cookie-accept">Accept All</button>
+        <button id="btn-cookie-decline" class="btn-cookie-decline">Essential Only</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cookie Consent Logic -->
+  <script>
+    (function() {
+      const banner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('btn-cookie-accept');
+      const declineBtn = document.getElementById('btn-cookie-decline');
+      const consentKey = 'neon_flip_cookie_consent';
+
+      if (!localStorage.getItem(consentKey)) {
+        banner.classList.remove('hidden');
+      }
+
+      function handleConsent(choice) {
+        localStorage.setItem(consentKey, choice);
+        banner.classList.add('hidden');
+      }
+
+      if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));
+      if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
+    })();
+  </script>
+
+  <!-- Game Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/skins.js"></script>
+  <script src="js/challenges.js"></script>
+  <script src="js/admob.js"></script>
+  <script src="js/leaderboard.js"></script>
+  <script src="js/scorecard.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
 </html>

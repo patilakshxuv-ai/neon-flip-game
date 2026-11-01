@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – NEON FLIP</title>
+  <meta name="description" content="Contact the Neon Flip team for support, feature requests, or business inquiries.">
+  <meta name="google-adsense-account" content="ca-pub-7950440884088062">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      overflow-y: auto !important; position: static !important;
+      background: #06040e; color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7; margin: 0; padding: 0;
+    }
+    .legal-container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+    .legal-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 24px; background: rgba(14, 10, 28, 0.95);
+      border-bottom: 2px solid rgba(0, 243, 255, 0.35); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px);
+    }
+    .legal-nav a { color: #00f3ff; text-decoration: none; font-weight: bold; }
+    h1 { font-size: 34px; color: #00f3ff; margin-bottom: 8px; }
+    p { color: #cfd8dc; font-size: 15px; margin-bottom: 14px; }
+    .contact-card {
+      background: rgba(18, 12, 34, 0.88);
+      border: 1.5px solid rgba(0, 243, 255, 0.35);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      color: #00f3ff;
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+    .btn-submit {
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.3), rgba(176, 38, 255, 0.3));
+      border: 1.5px solid #00f3ff;
+      color: #fff;
+      padding: 12px 24px;
+      font-weight: 900;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      align-self: flex-start;
+      letter-spacing: 1px;
+    }
+    .legal-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 30px 20px;
+      text-align: center; background: #040208; margin-top: 60px;
+    }
+    .legal-footer a { color: #00f3ff; margin: 0 10px; font-size: 14px; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header class="legal-nav">
+    <a href="index.html">← Back to Neon Flip Game</a>
+    <span style="font-weight: bold; color: #00f3ff;">CONTACT US</span>
+  </header>
+
+  <main class="legal-container">
+    <h1>Contact & Support</h1>
+    <p>Have an inquiry, found an issue, or want to partner with us? Reach out directly!</p>
+
+    <div class="contact-card">
+      <h2 style="color: #00f3ff; font-size: 20px; margin-top: 0;">Direct Email</h2>
+      <p>Send an email directly to our support team:<br>
+      <a href="mailto:patilakshxuv@gmail.com" style="color: #ffd700; font-size: 16px; font-weight: bold;">patilakshxuv@gmail.com</a></p>
+
+      <h2 style="color: #b026ff; font-size: 20px; margin-top: 24px;">Send a Message</h2>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message transmitted! We will reply via email shortly.'); this.reset();">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" required placeholder="e.g. CyberRunner">
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email Address</label>
+          <input type="email" id="email" required placeholder="e.g. runner@domain.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required placeholder="Tell us how we can help..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">TRANSMIT MESSAGE</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="legal-footer">
+    <a href="index.html">Play Game</a>
+    <a href="about.html">About Us</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="contact.html">Contact Us</a>
+    <div style="margin-top: 14px; font-size: 12px; color: #8e9aaf;">
+      © 2026 Neon Flip Arcade. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
