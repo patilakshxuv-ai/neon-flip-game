@@ -74,6 +74,10 @@
       const target = document.getElementById(screenId);
       if (target) target.classList.remove('hidden');
 
+      if (window.loadAdsForScreen) {
+        window.loadAdsForScreen(screenId);
+      }
+
       if (screenId === 'menu-screen') {
         this.updateHeaderStats();
         this.checkAchievements();

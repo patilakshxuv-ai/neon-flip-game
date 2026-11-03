@@ -4,14 +4,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>NEON FLIP – One Tap Gravity Challenge</title>
-  <meta name="description" content="Addictive one-touch cyberpunk arcade game. Tap to flip gravity, avoid lethal lasers, collect coins, and challenge friends!">
+  <meta name="description" content="Play Neon Flip, a free browser arcade game. Tap or press Space to flip gravity, dodge obstacles, collect coins, and beat your high score on mobile or desktop.">
+  <link rel="canonical" href="https://neon-flip-2.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Neon Flip – One-Tap Gravity Arcade Game">
+  <meta property="og:description" content="Flip gravity, dodge obstacles, collect coins, and beat your high score in this free browser arcade game.">
+  <meta property="og:url" content="https://neon-flip-2.vercel.app/">
+  <meta name="twitter:card" content="summary">
   <meta name="google-adsense-account" content="ca-pub-7950440884088062">
   <meta name="theme-color" content="#06040e">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Neon Flip",
+      "url": "https://neon-flip-2.vercel.app/",
+      "description": "A free browser arcade game where players flip gravity to dodge obstacles and collect coins.",
+      "genre": "Arcade",
+      "gamePlatform": "Web browser"
+    }
+  </script>
 
-  <!-- Live Google AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062" crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --neon-cyan: #00f3ff;
+      --neon-purple: #b026ff;
+      --dark-bg: #06040e;
+      --font-cyber: 'Orbitron', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'Rajdhani', monospace, sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: fixed;
+      background-color: var(--dark-bg);
+      color: #fff;
+      font-family: var(--font-cyber);
+    }
+    #game-container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #110825 0%, #05030a 100%);
+    }
+    #gameCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .game-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 20px 24px;
+      pointer-events: none;
+    }
+    .interactive-layer { pointer-events: auto; }
+    .hidden { display: none !important; }
+    #splash-screen {
+      background: radial-gradient(circle at center, #180936 0%, #06030c 100%);
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .splash-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 25vh;
+    }
+    .neon-logo {
+      color: #fff;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-purple);
+    }
+    .neon-sublogo {
+      margin-top: 8px;
+      color: var(--neon-cyan);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      letter-spacing: 6px;
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+    .splash-description {
+      max-width: 290px;
+      margin-top: 18px;
+      color: #cfd8dc;
+      font-family: var(--font-mono);
+      font-size: 15px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .tap-to-start {
+      margin-top: 40px;
+      color: #fff;
+      font-size: 15px;
+      letter-spacing: 3px;
+    }
+  </style>
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
   <style>
     /* Legal Navigation & Cookie Banner Styling */
     .menu-legal-links {
@@ -142,6 +258,7 @@
       <div class="splash-content">
         <h1 class="neon-logo">NEON FLIP</h1>
         <div class="neon-sublogo">ONE TAP CHALLENGE</div>
+        <p class="splash-description">Tap to flip gravity, dodge obstacles, and collect coins. Free to play in your mobile browser.</p>
       </div>
       <div id="splash-tap" class="tap-to-start hidden">TAP SCREEN TO ENTER</div>
     </section>
@@ -156,14 +273,12 @@
              data-ad-format="autorelaxed"
              data-ad-client="ca-pub-7950440884088062"
              data-ad-slot="6304951178"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-format="fluid"
              data-ad-layout-key="-6t+ed+2i-1n-4w"
              data-ad-client="ca-pub-7950440884088062"
              data-ad-slot="7618032841"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
       <!-- Top Stats Bar -->
@@ -286,7 +401,6 @@
                data-ad-format="fluid"
                data-ad-client="ca-pub-7950440884088062"
                data-ad-slot="7697748881"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
           <!-- VELAR -->
           <ins class="adsbygoogle"
                 style="display:block"
@@ -294,7 +408,6 @@
                 data-ad-slot="7650656586"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="go-actions">
@@ -463,6 +576,42 @@
 
   </div>
 
+  <script>
+    let adsenseLoadPromise;
+
+    window.loadAdsForScreen = function (screenId) {
+      const screen = document.getElementById(screenId);
+      if (!screen) return;
+
+      if (localStorage.getItem('neon_flip_cookie_consent') !== 'accepted') return;
+
+      const adUnits = Array.from(screen.querySelectorAll('ins.adsbygoogle:not([data-ad-requested])'));
+      if (!adUnits.length) return;
+      adUnits.forEach(unit => { unit.dataset.adRequested = 'true'; });
+
+      if (!adsenseLoadPromise) {
+        adsenseLoadPromise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062';
+          script.onload = resolve;
+          script.onerror = () => reject(new Error('Google AdSense failed to load'));
+          document.head.appendChild(script);
+        });
+      }
+
+      adsenseLoadPromise.then(() => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        adUnits.forEach(() => window.adsbygoogle.push({}));
+      }, error => {
+        adsenseLoadPromise = null;
+        adUnits.forEach(unit => { delete unit.dataset.adRequested; });
+        console.error(error);
+      });
+    };
+  </script>
+
   <!-- Cookie Consent Logic -->
   <script>
     (function() {
@@ -478,6 +627,10 @@
       function handleConsent(choice) {
         localStorage.setItem(consentKey, choice);
         banner.classList.add('hidden');
+        if (choice === 'accepted' && window.loadAdsForScreen) {
+          const activeScreen = document.querySelector('.game-screen:not(.hidden)');
+          if (activeScreen) window.loadAdsForScreen(activeScreen.id);
+        }
       }
 
       if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));

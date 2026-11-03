@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us – NEON FLIP</title>
   <meta name="description" content="Contact the Neon Flip team for support, feature requests, or business inquiries.">
+  <link rel="canonical" href="https://neon-flip-2.vercel.app/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Neon Flip">
+  <meta property="og:description" content="Contact the Neon Flip team for support or business inquiries.">
+  <meta property="og:url" content="https://neon-flip-2.vercel.app/contact.html">
   <meta name="google-adsense-account" content="ca-pub-7950440884088062">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7950440884088062" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <style>
     body {
@@ -31,42 +35,6 @@
       padding: 24px;
       margin: 24px 0;
     }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: bold;
-      color: #00f3ff;
-      margin-bottom: 6px;
-    }
-    .form-group input, .form-group textarea {
-      width: 100%;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(0, 243, 255, 0.3);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
-      font-family: inherit;
-      box-sizing: border-box;
-    }
-    .btn-submit {
-      background: linear-gradient(135deg, rgba(0, 243, 255, 0.3), rgba(176, 38, 255, 0.3));
-      border: 1.5px solid #00f3ff;
-      color: #fff;
-      padding: 12px 24px;
-      font-weight: 900;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      align-self: flex-start;
-      letter-spacing: 1px;
-    }
     .legal-footer {
       border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 30px 20px;
       text-align: center; background: #040208; margin-top: 60px;
@@ -90,22 +58,6 @@
       <p>Send an email directly to our support team:<br>
       <a href="mailto:patilakshxuv@gmail.com" style="color: #ffd700; font-size: 16px; font-weight: bold;">patilakshxuv@gmail.com</a></p>
 
-      <h2 style="color: #b026ff; font-size: 20px; margin-top: 24px;">Send a Message</h2>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message transmitted! We will reply via email shortly.'); this.reset();">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required placeholder="e.g. CyberRunner">
-        </div>
-        <div class="form-group">
-          <label for="email">Your Email Address</label>
-          <input type="email" id="email" required placeholder="e.g. runner@domain.com">
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" rows="5" required placeholder="Tell us how we can help..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">TRANSMIT MESSAGE</button>
-      </form>
     </div>
   </main>
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neon-flip-2.vercel.app/sitemap.xml
